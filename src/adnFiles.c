@@ -1,6 +1,5 @@
 #include "adnFiles.h"
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Lit la taille et la valeur de deux mots d'un fichier .adn
 */
@@ -29,7 +28,7 @@ int read_adnFILE(char* filename, int* _n, int* _m, char** x, char** y)
     fclose(f);
     exit(__LINE__);
   }
-
+  printf("\nn = %d\nm = %d\n", n, m);
   *x = malloc(n * sizeof(char) );
   *y = malloc(m * sizeof(char) );
 
@@ -50,8 +49,12 @@ int read_adnFILE(char* filename, int* _n, int* _m, char** x, char** y)
     exit(__LINE__);
   }
 
-  strcpy(*x, strtok( x2 ," "));
-  strcpy(*y, strtok( y2 ," "));
+  printf("\nx2 = %s\ny2 = %d\n", x2, y2);
+
+  tools_suppressChar(*x, x2, ' ' );
+  tools_suppressChar(*y, y2, ' ' );
+  // strcpy(*x, tools_suppressChar(*x, x2, ' ' ));
+  // strcpy(*y, tools_suppressChar(*y, y2, ' ' ));
 
   fclose(f);
   if (_n != NULL)

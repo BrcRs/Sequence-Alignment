@@ -90,8 +90,8 @@ int tools_countZerosInTab(int * tab, int size)
 
 char* tools_suppressChar(char* dest, char* src, const char sup )
 {
-  printf("\n%c\n\n", src[0]);
-  printf("\n%c\n\n", dest[0]);
+  // printf("\n\'%c\'\n\n", src[1]);
+  // printf("\n\'%c\'\n\n", dest[1]);
   int i = 0;
   int j = 0;
   while (src[i] != '\0')
@@ -99,17 +99,20 @@ char* tools_suppressChar(char* dest, char* src, const char sup )
 
     if (src[i] != sup)
     {
-      printf("\n%c\n\n", src[i]);
-      printf("\n%c\n\n", dest[j]);
+      // printf("\ni=%d, j=%d, sup=\'%c\'", i, j, sup);
+      // printf("\n%c\n\n", src[i]);
+      // printf("\n%c\n\n", dest[j]);
 
       dest[j] = src[i];
+      // dest[j] = 'I';
       j++;
     }
 
     i++;
   }
-
+  // printf("\ndest[j=%d] = \'\0\'\n\n", j);
   dest[j] = '\0';
 
-  return dest + j;
+  // return dest + j;
+  return NULL;
 }

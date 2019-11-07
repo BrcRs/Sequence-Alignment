@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "tools.h"
 
 int read_adnFILE(char* filename, int* _n, int* _m, char** x, char** y);
 
