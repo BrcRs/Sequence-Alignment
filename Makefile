@@ -6,7 +6,7 @@ CFLAGS = -Werror
 BINDIR := bin
 SRCDIR := src
 
-PROGRAMS = TacheA test_tools
+PROGRAMS = TacheA test_tools test_adnFiles
 
 SRCS := src/*.c
 
@@ -19,8 +19,8 @@ check :
 	-cd $(BINDIR) ; mv -t .. *.o
 
 # Compilation
-
 %.o : $(SRCDIR)/%.c
+# $(OBJS) : $(SRCDIR)/%.c
 	$(CC) -c $< $(CFLAGS) -o $@
 
 
@@ -30,6 +30,10 @@ TacheA: TacheA.o adnFiles.o
 
 test_tools: test_tools.o tools.o
 	$(LINK) test_tools.o tools.o
+
+test_adnFiles: test_adnFiles.o adnFiles.o tools.o
+	$(LINK) test_adnFiles.o adnFiles.o tools.o
+
 
 #testMini6: testMini6.o graph.o viaMinimization.o generatePostScript.o $(OBJSA)
 #	$(LINK) testMini6.o viaMinimization.o graph.o generatePostScript.o $(OBJSA)
