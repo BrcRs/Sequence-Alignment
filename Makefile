@@ -1,7 +1,7 @@
 CC = gcc
 COMPILE = $(CC) -fPIC -g3 -c
 LINK = $(CC) -o $@
-CFLAGS = -Werror
+CFLAGS = -Wall -Werror
 
 BINDIR := bin
 SRCDIR := src
@@ -25,8 +25,8 @@ check :
 
 
 # Edition des liens
-TacheA: TacheA.o adnFiles.o
-	$(LINK) TacheA.o adnFiles.o
+TacheA: TacheA.o adnFiles.o tools.o
+	$(LINK) TacheA.o adnFiles.o tools.o
 
 test_tools: test_tools.o tools.o
 	$(LINK) test_tools.o tools.o

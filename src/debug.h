@@ -1,9 +1,14 @@
-// #define DEBUGOK
-#ifndef DEBUGOK
+#ifndef DEBUG_H
+#define DEBUG_H
+
 #define DEBUGOK
-#define DEBUG() printf("\n%s, ligne %d\n", __PRETTY_FUNCTION__, __LINE__)
+#ifdef DEBUGOK
+#define DEBUG() printf("\n[%s:%s], l%d : ", __FILE__, __PRETTY_FUNCTION__, __LINE__)
+#define DEBUGX(x) printf("\n[%s:%s] l%d : %s\n", __FILE__ ,__PRETTY_FUNCTION__, __LINE__, x)
 
 #else
 #define DEBUG()
+#define DEBUGX(x)
 
+#endif
 #endif

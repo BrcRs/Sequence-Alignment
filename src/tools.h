@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "debug.h"
 
 #define MAX(x, y) (x < y ? y : x)
 #define MIN(x, y) (x < y ? x : y)
@@ -13,6 +14,9 @@
 char* tools_basename( char* src);
 
 int tools_LineInFile(char* line, char* filename);
+int tools_LineInFILE(char** line, FILE* f);
+
+
 int tools_countZerosInTab(int * tab, int size);
 
 char* tools_suppressChar(char* dest, char* src, const char sup );

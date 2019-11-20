@@ -38,6 +38,9 @@ char* tools_basename( char* src)
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Lit une ligne du fichier specifie, stocke le resultat dans char* line, sans
 * retour a la ligne ('\n').
+* Retourne 0 si tout se passe bien. -1 est retourne si la taille de la ligne
+* lue est trop grande (superieure a la variable locale MAX).
+* Retourne 1 si buffer est different du resultat attendu.
 */
 int tools_LineInFile(char* line, char* filename)
 {
@@ -63,18 +66,69 @@ int tools_LineInFile(char* line, char* filename)
       i++;
     }
     buffer[i] = '\0';
-    if (!strcmp(buffer, line))
-    {
-      fclose(f);
-      return 1;
-    }
+    /* ??? */
+    // if (!strcmp(buffer, line))
+    // {
+    //   fclose(f);
+    //   return 1;
+    // }
   }
   while(c != EOF);
 
 
   fclose(f);
+
+  strcpy(line, buffer);
   return 0;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Lit une ligne du fichier specifie, stocke le resultat dans char* line, sans
+* retour a la ligne ('\n').
+* Retourne 0 si tout se passe bien. -1 est retourne si la taille de la ligne
+* lue est trop grande (superieure a la variable locale MAX).
+*/
+int tools_LineInFILE(char** line, FILE* f)
+{
+
+  // FILE* f = fopen(filename, "r");
+
+  int MAX = 255;
+  char buffer[MAX];
+  char c;
+  int i;
+  // do
+  // {
+    c = fgetc(f); // Does not read right character
+    // DEBUG();printf("c = \'%c\'\n", c);
+    i = 0;
+    while(c != '\n' && c != EOF)
+    {
+      if (i > MAX)
+      {
+        return -1;
+      }
+      buffer[i] = c;
+      // DEBUG();printf("c = \'%c\'\n", c);
+      // DEBUG();printf("buffer[%d] = \'%c\'\n", i, buffer[i]);
+      c = fgetc(f);
+
+      i++;
+    }
+    buffer[i] = '\0';
+
+  // }
+  // while(c != EOF);
+
+  // DEBUG();printf("buffer = %s", buffer);
+  // fclose(f);
+
+  strcpy(*line, buffer);
+  // DEBUG();printf("*line = %s", *line);
+
+  return 0;
+}
+
 
 int tools_countZerosInTab(int * tab, int size)
 {
