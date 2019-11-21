@@ -1,7 +1,8 @@
 CC = gcc
 COMPILE = $(CC) -fPIC -g3 -c
 LINK = $(CC) -o $@
-CFLAGS = -Wall -Werror
+CFLAGS = -Wall -Werror -O3
+
 
 BINDIR := bin
 SRCDIR := src

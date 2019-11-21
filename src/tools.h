@@ -8,6 +8,9 @@
 #define MAX(x, y) (x < y ? y : x)
 #define MIN(x, y) (x < y ? x : y)
 
+#define MAXBUFFER 255
+
+
 //#define MALLOC(n, x) ((x*)malloc(sizeof(x) * n))
 
 
@@ -20,6 +23,8 @@ int tools_LineInFILE(char** line, FILE* f);
 int tools_countZerosInTab(int * tab, int size);
 
 char* tools_suppressChar(char* dest, char* src, const char sup );
+
+int tools_LS(char* folderName);
 
 
 #endif

@@ -47,8 +47,7 @@ int tools_LineInFile(char* line, char* filename)
 
   FILE* f = fopen(filename, "r");
 
-  int MAX = 255;
-  char buffer[MAX];
+  char buffer[MAXBUFFER];
   char c;
   int i;
   do
@@ -57,7 +56,7 @@ int tools_LineInFile(char* line, char* filename)
     i = 0;
     while(c != '\n' && c != EOF)
     {
-      if (i > MAX)
+      if (i > MAXBUFFER)
       {
         return -1;
       }
@@ -93,8 +92,7 @@ int tools_LineInFILE(char** line, FILE* f)
 
   // FILE* f = fopen(filename, "r");
 
-  int MAX = 255;
-  char buffer[MAX];
+  char buffer[MAXBUFFER];
   char c;
   int i;
   // do
@@ -104,7 +102,7 @@ int tools_LineInFILE(char** line, FILE* f)
     i = 0;
     while(c != '\n' && c != EOF)
     {
-      if (i > MAX)
+      if (i > MAXBUFFER)
       {
         return -1;
       }
@@ -169,4 +167,31 @@ char* tools_suppressChar(char* dest, char* src, const char sup )
 
   // return dest + j;
   return NULL;
+}
+
+int tools_LS(char* folderName)
+{
+  char command[MAXBUFFER];
+  strcpy(command, "ls ");
+  strcat(command, folderName);
+  int returnValue = system(command);
+  switch (returnValue)
+  {
+    case 0 :
+    fprintf(stderr, "\n[%s:%s:l%d] Error : Shell unavailable\n", __FILE__, __PRETTY_FUNCTION__, __LINE__);
+    exit(__LINE__);
+    break;
+
+    case -1 :
+    fprintf(stderr, "\n[%s:%s:l%d] Error : Child process could not be created\n", __FILE__, __PRETTY_FUNCTION__, __LINE__);
+    exit(__LINE__);
+
+    break;
+
+    default :
+
+    break;
+  }
+
+  return 0;
 }
