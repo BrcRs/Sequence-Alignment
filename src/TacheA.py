@@ -9,6 +9,10 @@ INFINI = -1
 
 
 def csub(x_i, y_i) :
+    """
+    char * char -> int
+    Retourne le cout de la substitution (x_i, y_i).
+    """
     if (x_i == y_i) :
         return 0
     if ((x_i == 'A' and y_i == 'T') or (x_i == 'G' and y_i == 'C') or (x_i == 'C' and y_i == 'G')or (x_i == 'T' and y_i == 'A')) :
