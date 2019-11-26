@@ -17,7 +17,7 @@ def DIST_1 (x, y) :
     # matrice : list(list(int))
     # matrice = [[INFINI] * lenY] * lenX
     matrice = creer_Matrice(lenX, lenY, INFINI)
-    matrice[0][0] = min([cins, csub(x[0], y[0])])
+    matrice[0][0] = min([2*cins, csub(x[0], y[0]), 2*cdel])
     for i in range(lenX) :
         for j in range(lenY) :
             mat_ij = matrice[i][j]
