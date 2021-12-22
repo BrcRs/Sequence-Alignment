@@ -6,6 +6,7 @@ voit simplement comme des suites de nucléotides. Cela permet, lorsqu'un nouveau
 comparer ses gênes à ceux de génomes précédemment séquencés, et de repérer ainsi des homologies, c'est-à-
 dire les ressemblances dues au fait que les deux espèces ont un ancêtre commun qui leur a transmis ce gêne,
 même si ce gêne a pu subir des mutations (évolutions) au cours du temps.
+
 D'un point de vue informatique, les séquences de nucléotides sont vues comme des mots sur l'alphabet
 {A,T,G,C} et l'on est ramené à deux problèmes d'algorithmique du texte : le calcul de la distance d'édition
 entre deux mots quelconques et la production d'un alignement réalisant cette distance. Pour chacun de ces
